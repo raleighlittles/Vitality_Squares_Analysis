@@ -1,12 +1,17 @@
 import os
-import re
+import ast
+import pdb
 from typing import List
 
-def discover_files(root_dir : str):
+
+def discover_files(root_dir: str) -> List[str]:
     return [file for file in os.listdir(root_dir) if file.endswith(".txt")]
 
-def extract_results_from_text(input_file_for_month : str) -> List[str]:
+def parse_coordinates(input_file_for_month: str):
     coords_of_fruits = []
-    for coordinates in input_file_for_month.split("\n"):
-        coords_of_fruits.append(tuple(map(int, re.sub('\W', '', coordinates))))
+    with open(input_file_for_month, 'r') as file:
+        for line in file:
+                if line.rstrip():
+                    coords_of_fruits.append(ast.literal_eval(line))
+
     return coords_of_fruits
