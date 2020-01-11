@@ -16,5 +16,6 @@ def plot_heatmap(coordinates : List[Tuple[int, int]]):
     plt.xticks(range(max(x)))
     plt.yticks(range(max(y)))
     plt.gca().invert_yaxis()
-    plt.savefig("myplot.svg")
+    plt.title("Occurrence of fruits on Vitality Squares")
+    plt.savefig("plot.svg")
     plt.close()
